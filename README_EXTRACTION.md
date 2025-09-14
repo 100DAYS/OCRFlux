@@ -7,15 +7,15 @@ This directory contains scripts for extracting structured invoice data from PDFs
 Successfully tested extraction pipeline on NVIDIA RTX 4000 SFF Ada (19.5GB) with real German invoice.
 
 ### Test File
-- **Invoice**: 125-RE-02267-2025-01-21-TeltecAG.pdf
-- **Vendor**: Teltec AG (German technology supplier)
-- **Product**: ARRI Codex Compact Drive Set with 3 serial numbers
+- **Invoice Type**: German technology equipment invoice
+- **Language**: German
+- **Features Tested**: Multi-line items, serial numbers, European VAT
 
 ### Test Results
 
 #### 1. Full Precision 3B Model
 ```bash
-python extract_invoice_data.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
+python extract_invoice_data.py invoice.pdf \
     --extract-model Qwen/Qwen2.5-3B-Instruct \
     --gpu-memory 0.7 \
     --save-json
@@ -26,7 +26,7 @@ python extract_invoice_data.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
 
 #### 2. 4-bit Quantized 7B Model (RECOMMENDED)
 ```bash
-python extract_invoice_quantized.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
+python extract_invoice_quantized.py invoice.pdf \
     --extract-model Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4 \
     --gpu-memory 0.5 \
     --save-json
@@ -40,12 +40,12 @@ python extract_invoice_quantized.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
 {
   "line_items": [{
     "position": 1,
-    "article_number": "12282327",
-    "description": "ARRI K0.0024596 Codex Compact Drive Set 3x1TB",
+    "article_number": "12345678",
+    "description": "Professional Camera Equipment Set",
     "quantity": 1,
-    "unit_price": 3847.50,
-    "total": 3847.50,
-    "serial_numbers": ["60200181", "60200183", "60200187"]
+    "unit_price": 2499.99,
+    "total": 2499.99,
+    "serial_numbers": ["SN-2024-0001", "SN-2024-0002", "SN-2024-0003"]
   }]
 }
 ```

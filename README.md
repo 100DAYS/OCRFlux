@@ -1,3 +1,18 @@
+## 🚀 100DAYS Fork - Enhanced with Invoice Data Extraction
+
+This fork extends OCRFlux with **structured data extraction capabilities** for invoices and documents. We've added a complete pipeline for extracting line items, serial numbers, and financial data from OCRFlux-generated markdown using quantized LLMs.
+
+📖 **[See Invoice Extraction Documentation](README_EXTRACTION.md)** for details on the new extraction pipeline.
+
+### Fork Features:
+- 📄 Invoice data extraction to structured JSON
+- 🔢 Serial number extraction from line items
+- ⚡ 4-bit quantized model support (GPTQ/AWQ)
+- 💾 Memory-efficient: 7B model uses less memory than 3B
+- 🌍 Multi-language support (tested with German invoices)
+
+---
+
 <div align="center">
 <img src="./images/OCRFlux.png" alt="OCRFlux Logo" width="300"/>
 <hr/>

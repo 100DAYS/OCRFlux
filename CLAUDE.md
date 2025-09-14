@@ -126,13 +126,13 @@ Successfully tested on NVIDIA RTX 4000 SFF Ada (19.5GB) with German invoice PDF.
 #### Test Commands:
 ```bash
 # Full precision 3B model (baseline)
-python extract_invoice_data.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
+python extract_invoice_data.py invoice.pdf \
     --extract-model Qwen/Qwen2.5-3B-Instruct \
     --gpu-memory 0.7 \
     --save-json
 
 # 4-bit quantized 7B model (recommended)
-python extract_invoice_quantized.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
+python extract_invoice_quantized.py invoice.pdf \
     --extract-model Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4 \
     --gpu-memory 0.5 \
     --save-json
@@ -149,3 +149,13 @@ python extract_invoice_quantized.py /root/125-RE-02267-2025-01-21-TeltecAG.pdf \
 - Handles multiple currencies and tax rates
 - Supports multi-language invoices (tested with German)
 - Automatic model downloading from HuggingFace
+
+## ⚠️ Important: Data Privacy for Public Repository
+
+**This is a PUBLIC repository.** When testing or documenting extraction features:
+- **Always anonymize sensitive data** before committing (serial numbers, prices, customer names)
+- **Replace real values** with generic examples
+- **Do not commit** actual invoice files or customer data
+- **Test data** should use synthetic or properly anonymized information
+
+All examples in this documentation have been anonymized for privacy.
